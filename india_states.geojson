@@ -1,0 +1,107 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "IN-DL",
+      "properties": {
+        "ST_NM": "Delhi",
+        "state_code": "IN-DL",
+        "civic_risk_score": 74.2,
+        "air_quality_avg": 218.0,
+        "active_anomalies_count": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[76.84, 28.41], [77.34, 28.41], [77.34, 28.88], [76.84, 28.88], [76.84, 28.41]]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IN-UP",
+      "properties": {
+        "ST_NM": "Uttar Pradesh",
+        "state_code": "IN-UP",
+        "civic_risk_score": 62.5,
+        "air_quality_avg": 172.0,
+        "active_anomalies_count": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[77.08, 27.20], [84.63, 23.86], [84.38, 27.31], [80.30, 28.91], [77.08, 27.20]]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IN-KA",
+      "properties": {
+        "ST_NM": "Karnataka",
+        "state_code": "IN-KA",
+        "civic_risk_score": 42.0,
+        "air_quality_avg": 68.0,
+        "active_anomalies_count": 1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[74.08, 14.87], [77.60, 11.59], [78.58, 13.80], [77.33, 18.44], [74.08, 14.87]]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IN-MH",
+      "properties": {
+        "ST_NM": "Maharashtra",
+        "state_code": "IN-MH",
+        "civic_risk_score": 53.8,
+        "air_quality_avg": 134.0,
+        "active_anomalies_count": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[72.65, 18.90], [80.89, 18.70], [80.30, 21.80], [73.50, 20.30], [72.65, 18.90]]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IN-GJ",
+      "properties": {
+        "ST_NM": "Gujarat",
+        "state_code": "IN-GJ",
+        "civic_risk_score": 38.5,
+        "air_quality_avg": 125.0,
+        "active_anomalies_count": 1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[68.10, 23.70], [74.40, 20.10], [74.00, 24.70], [70.00, 24.60], [68.10, 23.70]]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IN-TN",
+      "properties": {
+        "ST_NM": "Tamil Nadu",
+        "state_code": "IN-TN",
+        "civic_risk_score": 39.2,
+        "air_quality_avg": 72.0,
+        "active_anomalies_count": 0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[76.20, 8.08], [80.30, 13.50], [79.80, 11.20], [76.50, 10.50], [76.20, 8.08]]
+        ]
+      }
+    }
+  ]
+}
