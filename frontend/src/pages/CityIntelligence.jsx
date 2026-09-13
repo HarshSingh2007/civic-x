@@ -28,6 +28,9 @@ export default function CityIntelligence({ lang = 'en' }) {
       if (res && res.success) {
         setCityData(res.data);
       }
+    }).catch((err) => {
+      console.warn("CityIntelligence loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [selectedCityId]);

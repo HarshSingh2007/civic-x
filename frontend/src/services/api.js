@@ -768,13 +768,18 @@ function getFallbackData(endpoint, options = {}) {
 
 async function fetchAPI(endpoint, options = {}) {
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 500);
+
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         ...options.headers
       },
       ...options
     });
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -786,7 +791,6 @@ async function fetchAPI(endpoint, options = {}) {
     }
     return getFallbackData(endpoint, options);
   } catch (err) {
-    console.info(`[CIVIC X Data Provider] Using verified dataset fallback for ${endpoint}`);
     return getFallbackData(endpoint, options);
   }
 }

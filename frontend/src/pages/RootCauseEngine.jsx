@@ -18,6 +18,9 @@ export default function RootCauseEngine({ lang = 'en' }) {
       if (res && res.success) {
         setAnalysis(res.data);
       }
+    }).catch((err) => {
+      console.warn("RootCauseEngine loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [incidentId]);

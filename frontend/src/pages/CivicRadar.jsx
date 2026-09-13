@@ -17,6 +17,9 @@ export default function CivicRadar({ setCurrentPage, lang = 'en' }) {
       if (res && res.success) {
         setAnomalies(res.data || []);
       }
+    }).catch((err) => {
+      console.warn("CivicRadar loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, []);

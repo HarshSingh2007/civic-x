@@ -28,6 +28,9 @@ export default function IndiaPulse({ setCurrentPage, lang = 'en' }) {
       if (overviewRes && overviewRes.success) setOverview(overviewRes.data);
       if (citiesRes && citiesRes.success) setCities(citiesRes.data || []);
       if (stateRes && stateRes.success) setStateDetail(stateRes.data);
+    }).catch((err) => {
+      console.warn("IndiaPulse loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, []);

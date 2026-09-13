@@ -17,6 +17,9 @@ export default function Environment({ lang = 'en' }) {
       if (res && res.success) {
         setStations(res.data || []);
       }
+    }).catch((err) => {
+      console.warn("Environment loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, []);

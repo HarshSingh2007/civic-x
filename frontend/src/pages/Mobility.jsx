@@ -22,6 +22,9 @@ export default function Mobility({ lang = 'en' }) {
       } else {
         setError(res?.error || "Verified live mobility data is not currently available for this region.");
       }
+    }).catch((err) => {
+      console.warn("Mobility loading error:", err);
+    }).finally(() => {
       setLoading(false);
     });
   }, [selectedCity]);
