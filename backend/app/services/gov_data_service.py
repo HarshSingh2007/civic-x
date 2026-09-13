@@ -305,29 +305,67 @@ OFFICIAL_STATE_METRICS = [
     {"id": "IN-WB", "name": "West Bengal", "code": "IN-WB", "zone": "East", "civic_risk_score": 58.0, "urban_population_pct": 31.8, "air_quality_avg": 165.0, "active_anomalies_count": 2, "readiness_index": 74.0}
 ]
 
+import requests
+
 class GovDataService:
-    @staticmethod
-    def get_data_sources():
+    DATA_GOV_IN_KEY = os.getenv("DATA_GOV_IN_API_KEY", "579b464db66ec23bdd000001cdd394632b774f197d012e465656452f")
+    CPCB_AQI_RESOURCE_ID = "3b4a6f26-6dbf-415a-8f55-83f24364365c"
+
+    @classmethod
+    def fetch_live_gov_aqi(cls):
+        """
+        Fetches live real-time AQI observation feed from data.gov.in CPCB API endpoint.
+        """
+        try:
+            url = f"https://api.data.gov.in/resource/{cls.CPCB_AQI_RESOURCE_ID}?api-key={cls.DATA_GOV_IN_KEY}&format=json&limit=50"
+            res = requests.get(url, timeout=3)
+            if res.status_code == 200:
+                records = res.json().get("records", [])
+                if records:
+                    # Update local observation cache with live government station data
+                    city_map = {c["city_name"].lower(): c for c in OFFICIAL_CITY_OBSERVATIONS}
+                    for rec in records:
+                        c_name = rec.get("city", "").lower()
+                        if c_name in city_map:
+                            try:
+                                val = float(rec.get("pollutant_avg", 0))
+                                if rec.get("pollutant_id") == "PM2.5" and val > 0:
+                                    city_map[c_name]["pm25"] = val
+                                elif rec.get("pollutant_id") == "PM10" and val > 0:
+                                    city_map[c_name]["pm10"] = val
+                                city_map[c_name]["last_observation_time"] = datetime.now().strftime("%Y-%m-%d %H:%M IST")
+                                city_map[c_name]["source_name"] = "LIVE Feed: Central Pollution Control Board (data.gov.in)"
+                            except (ValueError, TypeError):
+                                pass
+        except Exception as e:
+            # Graceful fallback to cached official baseline observations
+            pass
+
+    @classmethod
+    def get_data_sources(cls):
         return GOV_DATA_SOURCES
 
-    @staticmethod
-    def get_all_cities():
+    @classmethod
+    def get_all_cities(cls):
+        cls.fetch_live_gov_aqi()
         return OFFICIAL_CITY_OBSERVATIONS
 
-    @staticmethod
-    def get_city_by_id(city_id: str):
+    @classmethod
+    def get_city_by_id(cls, city_id: str):
+        cls.fetch_live_gov_aqi()
         for city in OFFICIAL_CITY_OBSERVATIONS:
             if city["id"] == city_id.lower() or city["city_name"].lower() == city_id.lower():
                 return city
         return None
 
-    @staticmethod
-    def get_all_states():
+    @classmethod
+    def get_all_states(cls):
         return OFFICIAL_STATE_METRICS
 
-    @staticmethod
-    def get_state_by_code(code: str):
+    @classmethod
+    def get_state_by_code(cls, code: str):
         for state in OFFICIAL_STATE_METRICS:
             if state["code"].upper() == code.upper():
                 return state
         return None
+
