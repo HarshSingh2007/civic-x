@@ -7,6 +7,7 @@ import {
   Bus, 
   Wind, 
   MessageSquare, 
+  Sliders,
   Award
 } from 'lucide-react';
 import { t } from '../../utils/translations';
@@ -22,6 +23,7 @@ export default function Sidebar({ currentPage, setCurrentPage, lang, civicScore 
     { id: 'mobility', label: text.p5, icon: Bus },
     { id: 'environment', label: text.p6, icon: Wind },
     { id: 'feedback', label: text.p7, icon: MessageSquare },
+    { id: 'what-if-lab', label: text.p8 || "08 — What-If Policy Lab", icon: Sliders },
   ];
 
   return (

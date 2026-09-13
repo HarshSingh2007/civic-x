@@ -58,8 +58,13 @@ export const t = {
     station: "Govt Station",
     status: "Air Quality Status",
 
+    p7: "07 — Citizen Feedback & Ratings",
     p7_title: "07 — CITIZEN FEEDBACK & RATINGS",
-    p7_sub: "Rate municipal services and submit civic feedback directly to city managers"
+    p7_sub: "Rate municipal services and submit civic feedback directly to city managers",
+
+    p8: "08 — What-If Policy Lab",
+    p8_title: "08 — WHAT-IF POLICY SIMULATION LAB",
+    p8_sub: "Interactive policy variable slider & downstream trade-off modeling engine"
   },
   hi: {
     brand_title: "सिविक X",
@@ -75,6 +80,7 @@ export const t = {
     p5: "05 — बस और परिवहन",
     p6: "06 — हवा की गुणवत्ता",
     p7: "07 — नागरिक प्रतिक्रिया और रेटिंग",
+    p8: "08 — नीति सिमुलेशन लैब",
 
     p1_title: "01 — भारत नागरिक पल्स",
     p1_sub: "भारत के शहरों की वायु गुणवत्ता और सेवाओं का लाइव डेटा",
@@ -118,6 +124,9 @@ export const t = {
     status: "हवा की स्थिति",
 
     p7_title: "07 — नागरिक प्रतिक्रिया और रेटिंग",
-    p7_sub: "शहर की सेवाओं पर अपनी प्रतिक्रिया दें और रेटिंग देखें"
+    p7_sub: "शहर की सेवाओं पर अपनी प्रतिक्रिया दें और रेटिंग देखें",
+
+    p8_title: "08 — नीति सिमुलेशन लैब",
+    p8_sub: "नीतिगत बदलावों के प्रभावों का विश्लेषण और सिमुलेशन इंजन"
   }
 };

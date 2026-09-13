@@ -11,6 +11,7 @@ import RootCauseEngine from './pages/RootCauseEngine';
 import Mobility from './pages/Mobility';
 import Environment from './pages/Environment';
 import FeedbackSection from './pages/FeedbackSection';
+import WhatIfLab from './pages/WhatIfLab';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('landing');
@@ -36,6 +37,8 @@ export default function App() {
         return <Environment {...props} />;
       case 'feedback':
         return <FeedbackSection {...props} />;
+      case 'what-if-lab':
+        return <WhatIfLab {...props} />;
       default:
         return <IndiaPulse {...props} />;
     }
